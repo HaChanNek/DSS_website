@@ -204,7 +204,7 @@ elif report_option == "Survey Report":
 def process_file(file):
     time.sleep(30)
     # Trả về kết quả
-    return pd.read_csv('HotelBookingReport.csv')
+    return pd.read_csv('DSS_web/HotelBookingReport.csv')
 
 
 # Thiết lập tiêu đề và hướng dẫn
@@ -238,6 +238,6 @@ if st.button("Get result"):
         st.warning("Please upload a CSV file.")
 
 if st.checkbox('Show sample data'):
-    sample_data = pd.read_csv('hotel_booking.csv')
+    sample_data = pd.read_csv('DSS_web/hotel_booking.csv')
     st.write("Sample Data:")
     st.dataframe(sample_data)
