@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import time
 import os
 import base64
 
@@ -198,3 +199,45 @@ elif report_option == "Survey Report":
     elif survey_option == "Rebooking Report":
         st.markdown("<div class='centered-text'>Rebooking Report</div>", unsafe_allow_html=True)
         display_images_from_folder('DSS_web/Rebooking test', columns=3)
+
+# Hàm xử lý file CSV
+def process_file(file):
+    time.sleep(30)
+    # Trả về kết quả
+    return pd.read_csv('HotelBookingReport.csv')
+
+
+# Thiết lập tiêu đề và hướng dẫn
+st.title('Data Processor')
+st.write("Upload a CSV file and get your report.")
+
+# Widget tải file lên
+uploaded_file = st.file_uploader("Choose a file", type=["csv"])
+
+# Nút "Get result"
+if st.button("Get result"):
+    if uploaded_file is not None:
+        try:
+            user_data = pd.read_csv(uploaded_file)
+            with st.spinner('Processing...'):
+                result = process_file(uploaded_file)
+
+            st.success('Processing complete!')
+            st.write("Here is your report:")
+            st.dataframe(result)
+
+            st.download_button(
+                label="Download Result",
+                data=result.to_csv(index=False),
+                file_name="Report.csv",
+                mime="text/csv"
+            )
+        except Exception as e:
+            st.error(f"Error processing file: {e}")
+    else:
+        st.warning("Please upload a CSV file.")
+
+if st.checkbox('Show sample data'):
+    sample_data = pd.read_csv('hotel_booking.csv')
+    st.write("Sample Data:")
+    st.dataframe(sample_data)
