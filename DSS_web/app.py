@@ -1,4 +1,4 @@
-import streamlit as st
+cdimport streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -6,12 +6,12 @@ import os
 import base64
 
 # Đọc dữ liệu
-file_path = '/Users/___tt.h_/PycharmProjects/pythonProject/hotel_booking.csv'
+file_path = 'D:\\DSS_web\\DSS_web\\hotel_booking.csv'
 data = pd.read_csv(file_path)
 
 # Đường dẫn tới các tệp logo và hình nền
-logo_path = '/Users/___tt.h_/PycharmProjects/pythonProject/logo-dlg-hotel-danang.png'
-background_path = '/Users/___tt.h_/PycharmProjects/pythonProject/aboutbanner.jpg'
+logo_path = 'D:\\DSS_web\\DSS_web\\logo-dlg-hotel-danang.png'
+background_path = 'D:\\DSS_web\\DSS_web\\aboutbanner.jpg'
 
 # Tạo base64 từ hình ảnh để sử dụng trong CSS
 def get_base64_of_bin_file(bin_file):
@@ -193,8 +193,8 @@ elif report_option == "Survey Report":
 
     if survey_option == "Cancellation Report":
         st.markdown("<div class='centered-text'>Cancellation Report</div>", unsafe_allow_html=True)
-        display_images_from_folder('/Users/___tt.h_/PycharmProjects/pythonProject/Cancellation', columns=3)
+        display_images_from_folder('D:\\DSS_web\\DSS_web\\Cancellation', columns=3)
 
     elif survey_option == "Rebooking Report":
         st.markdown("<div class='centered-text'>Rebooking Report</div>", unsafe_allow_html=True)
-        display_images_from_folder('/Users/___tt.h_/PycharmProjects/pythonProject/Rebooking test', columns=3)
+        display_images_from_folder('D:\\DSS_web\\DSS_web\\Rebooking test', columns=3)
